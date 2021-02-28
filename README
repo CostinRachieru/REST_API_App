@@ -1,0 +1,43 @@
+Name: Costin-Tudor Rachieru
+Group: 324CA
+				Homework 2 - Web Client - REST API Comunication                
+
+	The client works the following way:
+	-> Reads a command from stdin.
+	-> Checks if it is a valid command and if it can be done in that moment (ex:
+	you can not logout if you never logged in).
+	-> Asks for more input (if necessary) and parses it.
+	-> Creates the message to be sent to the server.
+	-> Opens a connection to the server (it is opened now because that way I
+	am sure the connection is up).
+	-> Sends message to the server.
+	-> Gets a response from the server.
+	-> Searches for errors in the response from the server
+	-> Saves the changes that might have to be done (saves cookie / token).
+	-> Prints the error if there is one, otherwise prints a success message or
+	the information received.
+	-> Closes the connection to the server.
+	-> Waits for another input from stdin.
+
+	Some edge cases:
+	-> You will need to be logged out if you want to login with another account.
+	-> The logout action can receive an error from the server (if the cookie
+	expires) that says you were not logged in. I chose not to show it in the
+	user interface. Instead I showed that everything is allright (which is true)
+	and the user can log in again in any account after that.
+	-> you can not anything with books if you did not enter the library first.
+	-> you can not enter the library if you did not login first.
+	-> you can not logout if you did not login first.
+	-> The enter_library command can be a fail if the cookie is expired. I chose
+	to approach this problem by telling the user he needs to log in again. That
+	way he will not be able to do anything untill he logs in again, even if he
+	had already had a valid token. He will need to get cookie and token again.
+
+		I chose not to use a dedicated library for parsing a JSON. It was simple
+	enough to do the parsing by myself.
+		In chose to use C++ because at the beginning I thought I will need some
+	data structures from STL, but in the end I did not use any.
+
+		I tested the homework with Valgrind and I could not find any memory leaks
+	and errors.
+
